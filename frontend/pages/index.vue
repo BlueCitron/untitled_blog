@@ -3,7 +3,7 @@
 
   <MasterHead
   :mainTitle="$store.state.category.category.title || `BlueCitron's Blog`"
-  subTitle="Javascript & Node.js & Vue.js"
+  subTitle=""
   ></MasterHead>
 
   <div class="container">

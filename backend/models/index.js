@@ -27,11 +27,15 @@ db.Hashtag.belongsToMany(db.Post, { through: 'PostHashtag' });
 db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
 
 // 포스트 - 유저
-db.User.hasMany(db.Post, { foreignKey: 'writer' });
-db.Post.belongsTo(db.User, { foreignKey: 'writer' });
+db.User.hasMany(db.Post);
+db.Post.belongsTo(db.User);
 
 // 포스트 - 댓글
 db.Post.hasMany(db.Comment);
 db.Comment.belongsTo(db.Post);
+
+// 댓글 - 대댓글
+db.Comment.hasMany(db.Comment);
+db.Comment.belongsTo(db.Comment);
 
 module.exports = db;

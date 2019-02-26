@@ -22,18 +22,18 @@
 
           <h1>LOGIN</h1>
 
-          <div class="textbox">
+          <div class="textbox mt-4 mb-3">
             <i class="far fa-user"></i>
-            <input type="text" placeholder="username"/>
+            <input type="text" placeholder="username" v-model="username"/>
           </div>
 
-          <div class="textbox">
+          <div class="textbox mt-3 mb-4">
             <i class="fas fa-unlock"></i>
-            <input type="password" placeholder="password"/>
+            <input type="password" placeholder="password" v-model="password"/>
           </div>
 
           <div class="login-btn">
-            <button type="button" class="btn btn-outline-dark w-100">SIGN IN</button>
+            <button type="button" class="btn btn-outline-dark w-100" @click="login()">SIGN IN</button>
           </div>
         </div>
       </div>
@@ -43,10 +43,39 @@
 </div>
 </template>
 <script>
-
-
 export default {
-  components: { }
+  components: { },
+  data () {
+    return {
+      username: '',
+      password: '',
+    }
+  },
+
+  methods: {
+    async login () {
+      const { dispatch, commit } = this.$store
+      const { username, password } = this
+      try {
+        const { data } = await dispatch('auth/LOGIN', { username, password })
+        const { accessToken } = data
+        commit('auth/SET_ACCESSTOKEN', accessToken)
+        this.$cookie.set('accessToken', accessToken)
+        await this.verify(accessToken)
+        this.$router.push('/')
+      } catch (error) {
+        this.username = ''
+        this.password = ''
+      }
+    },
+
+    async verify (accessToken) {
+      const { dispatch, commit } = this.$store
+      const { data } = await dispatch('auth/VERIFY', { accessToken })
+      const { user } = data
+      commit('auth/SET_USER', user)
+    },
+  }
 }
 </script>
 <style scoped>

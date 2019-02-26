@@ -8,15 +8,11 @@
           <h6>최근 게시글</h6>
           <hr/>
           <div class="nowadays-items">
-            <p>
-              첫번째 게시글
-            </p>
-            <p>
-              첫번째 게시글
-            </p>
-            <p>
-              첫번째 게시글
-            </p>
+            <template v-for="post in $store.state.post.latest">
+              <p @click="$router.push(`/post/${post.id}`)" style="cursor: pointer;">
+                {{ post.title }}
+              </p>
+            </template>
           </div>
         </div>
 
@@ -24,30 +20,26 @@
           <h6>최근 댓글</h6>
           <hr/>
           <div class="nowadays-items">
-            <p>
-              첫번째 댓글
-            </p>
-            <p>
-              첫번째 댓글
-            </p>
-            <p>
-              첫번째 댓글
-            </p>
+            <template v-for="comment in $store.state.comment.latest">
+              <p @click="$router.push(`/post/${comment.post.id}`)" style="cursor: pointer;">
+                {{ comment.content }}
+              </p>
+            </template>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-3">
           <div class="total">
             <h5>Total</h5>
-            <h3>717,373</h3>
+            <h3>{{ $store.state.visit.total }}</h3>
           </div>
           <div class="visit">
             <h6>Today</h6>
-            <h6>373</h6>
+            <h6>{{ $store.state.visit.today }}</h6>
           </div>
           <div class="visit">
             <h6>Yesterday</h6>
-            <h6>73</h6>
+            <h6>{{ $store.state.visit.yestr }}</h6>
           </div>
         </div>
 

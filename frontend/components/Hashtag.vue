@@ -4,9 +4,9 @@
       <div class="col-lg-10 col-md-10 mx-auto">
         <div class="tagbox d-flex align-items-center">
           <h6>태그</h6>
-          <span class="tag">태그1</span>
-          <span class="tag">태그1</span>
-          <span class="tag">태그1</span>
+          <template v-for="hashtag in hashtags">
+            <span class="tag">{{ hashtag.title }}</span>
+          </template>
         </div>
         <hr/>
       </div>
@@ -16,7 +16,9 @@
 </template>
 <script>
 export default {
-
+  props: {
+    hashtags: Array
+  }
 }
 </script>
 <style scoped>

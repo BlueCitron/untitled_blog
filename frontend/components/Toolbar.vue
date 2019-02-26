@@ -18,9 +18,9 @@
               CATEGORY
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <template v-for="category in $store.state.category.list">
+                <a class="dropdown-item" @click="moveCategory(category)">{{ category.title }}</a>
+              </template>
             </div>
           </div>
         </li>
@@ -32,7 +32,14 @@
 </template>
 <script>
 export default {
-
+  methods: {
+    moveCategory (category) {
+      const { id } = category
+      const { dispatch, commit }  = this.$store
+      commit('category/SET_CATEGORY', category)
+      dispatch('post/FETCH_POSTS', { page: 1, category: id })
+    }
+  }
 }
 </script>
 <style scoped>

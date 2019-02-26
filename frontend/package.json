@@ -6,13 +6,19 @@
   "scripts": {
     "nuxt": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start"
+    "start": "nuxt start",
+    "prod": "pm2 start npm ecosystem.config.js --name nuxt -- start"
   },
   "dependencies": {
     "@toast-ui/vue-editor": "^1.0.4",
+    "axios": "^0.18.0",
     "material-design-icons-iconfont": "^4.0.5",
+    "moment": "^2.24.0",
     "nuxt": "^2.4.3",
+    "nuxt-start": "^2.4.5",
+    "query-string": "^6.2.0",
     "tui-editor": "^1.3.1",
+    "vue-cookie": "^1.1.4",
     "vuetify": "^1.5.1"
   }
 }

@@ -25,5 +25,8 @@ module.exports = {
     // '~assets/all.css',
     '~assets/clean-blog.css',
   ],
-  plugins: [ '~plugins/editor' ]
+  plugins: [ '~plugins/cookie', '~plugins/moment' ],
+  env: {
+    baseURL: 'http://localhost:3010'
+  }
 }

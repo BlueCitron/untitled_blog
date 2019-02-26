@@ -4,7 +4,7 @@
       <div class="col-lg-10 col-md-10 mx-auto">
         <h6>관련글</h6>
 
-        <div class="relativebox d-flex flex-wrap">
+        <div class="relativebox d-flex flex-wrap mt-3">
           <div class="relate-article-item">어떤 게시글</div>
           <div class="relate-article-item">어떤 게시글</div>
           <div class="relate-article-item">어떤 게시글</div>

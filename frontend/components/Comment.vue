@@ -1,49 +1,52 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-md-10 mx-auto">
-        <h6>댓글</h6>
+  <div>
+    <div class="comment-area" v-for="comment in comments">
 
-        <div class="comment-area" v-for="item in [1, 2, 3]">
-
-          <div class="commentor-info">
-            <h6 class="commentor">BlueCitron</h6>
-            <small class="comment-date">2019-02-19 18:56:35</small>
-            <small class="comment-date">
-              | <span>삭제</span>
-              | <span>답글</span>
-            </small>
-          </div>
-
-          <p>
-            댓글을달았습니다 제가
-          </p>
-
-          <hr/>
-        </div>
-
-        <div class="comment-info">
-          <input type="text" class="comment-name" placeholder="이름"/>
-          <input type="password" class="comment-password" placeholder="비밀번호"/>
-        </div>
-
-        <textarea
-        class="comment"
-        placeholder="댓글을 입력해주세요."
-        rows="8"
-        ></textarea>
-
-        <div class="float-right">
-          <button type="button" class="btn btn-info">댓글남기기</button>
-        </div>
-
+      <div class="commentor-info">
+        <h6 class="commentor">
+          {{ comment.writer }}
+        </h6>
+        <small class="comment-date">
+          {{ $moment(comment.createdAt).format('YYYY-MM-DD HH:mm:ss') }}
+        </small>
+        <small class="comment-date">
+          <span @click="$emit('selectComment', comment)" data-toggle="modal" data-target="#exampleModal">삭제</span>
+          <!-- | <span @click="$emit('selectComment', comment)">답글</span> -->
+        </small>
       </div>
-    </div>
 
+      <p>
+        {{ comment.content }}
+      </p>
+
+      <hr/>
+
+      <!-- 답글 -->
+      <!-- <div class="recomment">
+        <Comment
+        :comments="comment.comments"
+        ></Comment>
+      </div> -->
+
+    </div>
   </div>
 </template>
 <script>
+import Comment from './Comment.vue'
+
 export default {
+  name: 'Comment',
+  components: {
+    Comment
+  },
+  props: {
+    comments: Array,
+  },
+  data () {
+    return {
+
+    }
+  }
 
 }
 </script>
@@ -93,5 +96,8 @@ export default {
   width: 100%;
   font-family: 'Nanum Gothic', sans-serif;
   font-size: 12px;
+}
+.recomment {
+  padding-left: 40px;
 }
 </style>

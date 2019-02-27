@@ -27,6 +27,6 @@ module.exports = {
   ],
   plugins: [ '~plugins/cookie', '~plugins/moment' ],
   env: {
-    baseURL: 'http://localhost:3010'
+    baseURL: process.env.NODE_ENV == 'development' ? `http://localhost:3010` : `http://125.178.219.22:9010`,
   }
 }

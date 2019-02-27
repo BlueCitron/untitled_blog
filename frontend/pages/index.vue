@@ -82,6 +82,7 @@ export default {
   created () {
     const { page } = this.$store.state.post.pageinfo
     this.$store.dispatch('post/FETCH_POSTS', { page })
+    console.log(process.env.test)
   },
 }
 </script>

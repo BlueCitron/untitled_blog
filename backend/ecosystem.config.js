@@ -4,7 +4,7 @@ module.exports = {
     script: 'index.js',
     instances: 1,
     autorestart: false,
-    watch: false,
+    watch: [ 'src' ],
     max_memory_restart: '500M',
     env: {
       NODE_ENV: 'development',

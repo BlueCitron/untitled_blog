@@ -82,7 +82,6 @@ export default {
   async created () {
     const { page } = this.$store.state.post.pageinfo
     await this.$store.dispatch('post/FETCH_POSTS', { page })
-    console.log('baseURL : ', process.env.baseURL)
   },
 }
 </script>

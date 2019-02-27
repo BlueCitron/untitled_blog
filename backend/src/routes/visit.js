@@ -40,7 +40,7 @@ visitRouter.get('/', async (req, res, next) => {
 
 visitRouter.post('/', async (req, res, next) => {
   try {
-    const address = req.host;
+    const address = req.host == 'localhost' ? '127.0.0.1' : req.host;
     const isVisited = await Visit.findOne({
       where: {
         address,

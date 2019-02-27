@@ -60,7 +60,7 @@ export default {
       const { state, dispatch, commit } = this.$store
       const { pageinfo } = this.$store.state.post
       const { category } = this.$store.state.category
-      const { page, total } = pageinfo
+      const { page, totalPage } = pageinfo
       if (flag === 'prev') {
         if (page == 1) {
           return
@@ -69,7 +69,7 @@ export default {
           this.$store.dispatch('post/FETCH_POSTS', { page: (page/1) - 1, category: category.id })
         }
       } else if (flag == 'next') {
-        if (page >= total) {
+        if (page >= totalPage) {
           return
         } else {
           commit('post/SET_PAGE', (page/1) + 1)
@@ -79,10 +79,9 @@ export default {
     }
   },
 
-  created () {
+  async created () {
     const { page } = this.$store.state.post.pageinfo
-    this.$store.dispatch('post/FETCH_POSTS', { page })
-    console.log(process.env.test)
+    await this.$store.dispatch('post/FETCH_POSTS', { page })
   },
 }
 </script>

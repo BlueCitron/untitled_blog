@@ -95,8 +95,11 @@ export default {
 
   methods: {
     write () {
-      //console.log(this.editor.getHtml())
-      //return
+      if (this.category.id == null) {
+        alert('카테고리를 선택해주세요.')
+        return
+      }
+
       this.$store.dispatch('post/INSERT_POST', {
         title: this.title,
         content: this.editor.getHtml(),

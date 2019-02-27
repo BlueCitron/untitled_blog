@@ -11,9 +11,10 @@ export const state = () => ({
   list: [],
   latest: [],
   pageinfo: {
-    total: 0,
     page: 1,
-    perPage: 4,
+    perPage: 5,
+    totalPage: 1,
+    totalPost: 0,
   },
 })
 

@@ -98,7 +98,7 @@ postRouter.post('/', authenticateByToken, async (req, res, next) => {
     // 해시태그도 추가해야댐..!
     const { user } = req;
     const { title, content, category, hashtags } = req.body;
-    console.log('PostWrite : ', { title, content, category, hashtags })
+    
     if (!Array.isArray(hashtags)) {
       return res.status(400).json({
         success: false,

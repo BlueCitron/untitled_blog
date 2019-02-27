@@ -20,14 +20,21 @@ export default {
 
   },
 
-  created () {
-    this.$store.dispatch('category/FETCH_CATEGORIES')
-    this.$store.dispatch('post/FETCH_LATEST_POSTS')
-    this.$store.dispatch('comment/FETCH_LATEST_COMMENTS')
+  async fetch ({ store }) {
+    console.log('Server Fetch')
+    await store.dispatch('category/FETCH_CATEGORIES')
+    await store.dispatch('post/FETCH_LATEST_POSTS')
+    await store.dispatch('comment/FETCH_LATEST_COMMENTS')
+  },
+
+  async created () {
+    await this.$store.dispatch('category/FETCH_CATEGORIES')
+    await this.$store.dispatch('post/FETCH_LATEST_POSTS')
+    await this.$store.dispatch('comment/FETCH_LATEST_COMMENTS')
     if (process.client) {
       const accessToken = this.$cookie.get('accessToken')
       this.$store.commit('auth/SET_ACCESSTOKEN', accessToken)
-      this.$store.dispatch('visit/VISIT')
+      await this.$store.dispatch('visit/VISIT')
     }
   }
 }

@@ -18,7 +18,7 @@
     "username": "untitled_blog",
     "password": "Untitled_blog2@",
     "database": "untitled_blog",
-    "host": "125.178.219.22",
+    "host": "127.0.0.1",
     "port": "3306",
     "dialect": "mysql",
     "timezone": "Asia/Seoul"

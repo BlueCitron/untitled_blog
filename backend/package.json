@@ -4,15 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./app.js"
+    "dev": "cross-env NODE_ENV=development nodemon ./index.js --watch src",
+    "prod": "pm2 start ecosystem.config.js --env production"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.3.1"
+    "@babel/preset-env": "^7.3.4"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@babel/register": "^7.0.0",
     "bcrypt": "^3.0.4",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
@@ -25,10 +27,5 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.42.0"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
   }
 }

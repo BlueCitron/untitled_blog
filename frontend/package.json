@@ -7,7 +7,7 @@
     "nuxt": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "prod": "pm2 start npm ecosystem.config.js --name nuxt -- start"
+    "prod": "pm2 start ecosystem.config.js --env production"
   },
   "dependencies": {
     "@toast-ui/vue-editor": "^1.0.4",

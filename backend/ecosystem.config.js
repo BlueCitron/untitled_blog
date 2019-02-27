@@ -1,12 +1,10 @@
 module.exports = {
   apps : [{
-    name: 'BLOG_FNT',
-    script: 'node_modules/nuxt-start/bin/nuxt-start.js',
-    args: 'start',
-    restart_delay: 5,
+    name: 'BLOG_BND',
+    script: 'index.js',
     instances: 1,
-    autorestart: true,
-    watch: [ '.nuxt' ],
+    autorestart: false,
+    watch: false,
     max_memory_restart: '500M',
     env: {
       NODE_ENV: 'development'

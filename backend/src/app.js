@@ -15,7 +15,7 @@ passportConfig(passport);
 sequelize.sync({ force: false });
 
 const app = express();
-const { PORT } = process.env;
+const { PORT } = process.env || 3010;
 
 app.use(cors());
 app.use(morgan('dev'));

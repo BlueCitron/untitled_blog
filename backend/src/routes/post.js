@@ -95,10 +95,9 @@ postRouter.get('/', async (req, res, next) => {
 
 postRouter.post('/', authenticateByToken, async (req, res, next) => {
   try {
-    // 해시태그도 추가해야댐..!
     const { user } = req;
     const { title, content, category, hashtags } = req.body;
-    
+    console.log('Post Insert : ', { title, content, category, hashtags })
     if (!Array.isArray(hashtags)) {
       return res.status(400).json({
         success: false,

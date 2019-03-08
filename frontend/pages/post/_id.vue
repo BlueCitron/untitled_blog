@@ -28,7 +28,7 @@
   :hashtags="$store.state.post.post.hashtags"
   ></Hashtag>
 
-  <RelativeArticle></RelativeArticle>
+  <!-- <RelativeArticle></RelativeArticle> -->
 
   <CommentWindow></CommentWindow>
 

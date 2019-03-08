@@ -89,7 +89,7 @@ export default {
       title: '',
       // content: '',
       hashtag: '',
-      hashtags: [ 'Lorem', 'itsum' ],
+      hashtags: [],
     }
   },
 

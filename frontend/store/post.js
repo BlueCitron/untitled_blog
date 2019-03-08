@@ -29,7 +29,7 @@ export const actions = {
     try {
       const { data } = await fetchPost({ id })
       const { success, post } = data
-      const buf = new Buffer(post.content)
+      const buf = Buffer.from(post.content)
       post.content = buf.toString()
       commit('SET_POST', post)
     } catch (error) {
@@ -42,7 +42,7 @@ export const actions = {
       const { success } = data
       const { posts, pageinfo } = data
       posts.map(post => {
-        const buf = new Buffer(post.content)
+        const buf = Buffer.from(post.content)
         post.content = buf.toString()
       })
       commit('SET_POSTS', posts)

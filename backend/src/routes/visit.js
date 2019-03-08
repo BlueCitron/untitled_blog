@@ -50,12 +50,10 @@ visitRouter.post('/', async (req, res, next) => {
         }
       },
     });
-    console.log('Visited : ', isVisited)
+    
     if (!isVisited) {
-      console.log('방문처리')
       await Visit.create({ address });
     } else {
-      console.log('이미방문함. 재방문처리.')
       await isVisited.update({ address: address + '1' });
       await isVisited.update({ address });
     }

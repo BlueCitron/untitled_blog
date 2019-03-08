@@ -4,7 +4,17 @@ import Sequelize from 'sequelize';
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const options = {
+  dialect: 'mysql',
+  timezone: 'Asia/Seoul',
+  define: {
+    charset: 'utf8',
+    collate: 'utf8_general_ci',
+    timestamps: true
+  },
+  logging:false,
+}
+const sequelize = new Sequelize(config.database, config.username, config.password, options);
 
 const db = {};
 

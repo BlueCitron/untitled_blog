@@ -30,5 +30,3 @@ app.use(router);
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Listening on: http://localhost:${PORT}`)
 })
-
-console.log('NODE_ENV = ', process.env.NODE_ENV)
